@@ -1,19 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
+import Image from "./assets/profile.jpg"
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
 
 function App() {
-  const [count, setCount] = useState(0)
-  function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
-  }
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
     <>
-      <nav className='flex w-full h-15 justify-between py-3 px-20 items-center  opacity-75' >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+      <nav className='flex w-full h-15 justify-between py-5 px-20 items-center  opacity-75' >
         <div className='font-bold text-2xl' >lonishyn</div>
         <div className='grap-10'>
           <ul className='flex gap-10'>
@@ -23,42 +27,43 @@ function App() {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="border px-3 py-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
       </nav>
-      <section className='place-items-center'>
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="Artem Lonishyn profile picture" />
+      <section className='flex items-center justify-center min-h-screen gap-12 px-4 bg-white md:flex-row flex-col'>
+      <div className=''>
+        <img src={Image} alt="Artem Lonishyn profile picture" className='h-65 rounded-full' />
       </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Artem Lonishyn</h1>
-        <p class="section__text__p2">Full-stack Developer</p>
-        <div class="btn-container">
+      <div className='text-center'>
+        <p className='text-[13px] mb-1'>Hello, I'm</p>
+        <h1 className='text-3xl font-bold opacity-75 mb-1'>Artem Lonishyn</h1>
+        <p class="section__text__p2 mb-3">Full-stack Developer</p>
+        <div className='flex gap-4 mt-1.5'>
           <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
+            className='opacity-75 border-2 rounded-3xl p-1.5 px-2.5 hover:bg-slate-950 hover:text-white text-[13px]'
+            onClick={() => window.open('/CV_Artem_Lonishyn.pdf', '_blank')}
           >
             Download CV
           </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+          <button className='opacity-75 border-2 rounded-3xl p-1.5 px-2.5 bg-slate-950 text-white hover:bg-white hover:text-black text-[13px]' onclick="location.href='./#contact'">
             Contact Info
           </button>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://linkedin.com/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
+        <div className="flex gap-4 justify-center mt-4">
+          <a href="https://linkedin.com/in/..." target="_blank" rel="noopener noreferrer">
+            <FaLinkedin size={28} />
+          </a>
+          <a href="https://github.com/Alonishyn" target="_blank" rel="noopener noreferrer">
+          <FaGithub size={28} />
+          </a>
         </div>
       </div>
     </section>
+    </div>
     </>
   )
 }
