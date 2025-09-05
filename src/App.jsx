@@ -18,7 +18,7 @@ function App() {
     <>
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       <nav className='flex w-full h-15 justify-between py-5 px-20 items-center  opacity-75' >
-        <div className='font-bold text-2xl' >lonishyn</div>
+        <div className='font-bold text-3xl' >lonishyn</div>
         <div className='grap-10'>
           <ul className='flex gap-10'>
             <li><a href="#about">About</a></li>
@@ -39,9 +39,9 @@ function App() {
         <img src={Image} alt="Artem Lonishyn profile picture" className='h-65 rounded-full' />
       </div>
       <div className='text-center'>
-        <p className='text-[13px] mb-1'>Hello, I'm</p>
-        <h1 className='text-3xl font-bold opacity-75 mb-1'>Artem Lonishyn</h1>
-        <p class="section__text__p2 mb-3">Full-stack Developer</p>
+        <p className='text-[15px] mb-1'>Hello, I'm</p>
+        <h1 className='text-4xl font-bold opacity-75 mb-1'>Artem Lonishyn</h1>
+        <p className='mb-3 text-[20px]'>Full-stack Developer</p>
         <div className='flex gap-4 mt-1.5'>
           <button
             className='opacity-75 border-2 rounded-3xl p-1.5 px-2.5 hover:bg-slate-950 hover:text-white text-[13px]'
